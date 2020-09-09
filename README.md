@@ -2,6 +2,6 @@
 Inlämningar och assignments från Game Programmer
 
 
-01 - Fundamentals n/
-  Assignment - Klar n/
-  Extra - WIP
+## 01 - Fundamentals
+  Assignment - Klar.
+  Extra - WIP.
