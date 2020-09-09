@@ -8,7 +8,7 @@ Inlämningar och assignments från Game Programmer
 
 ## 02 - Learning to Program
 	Assignment - Klar
-	Extra - WIP
+	Extra - Animering gjord.
 
 ## 03 - Vectors
 	Assignment - WIP
