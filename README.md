@@ -3,5 +3,9 @@ Inlämningar och assignments från Game Programmer
 
 
 ## 01 - Fundamentals
-  Assignment - Klar.
-  Extra - WIP.
+	Assignment - Klar
+	Extra - WIP
+
+## 02 - Learning to Program
+	Assignment - Klar
+	Extra - WIP
