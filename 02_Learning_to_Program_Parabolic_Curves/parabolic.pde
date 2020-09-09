@@ -18,12 +18,13 @@ void draw()
 			stroke(0, 0, 0, 200);
 		}
 		else {
-			stroke(0, 0, 0, 64);
+			stroke(211, 12, 12, 117);
 		}
-
-		line(i, 0, 500, i);
-		line(i, 0, 0, 500 - i);
-		line(500, i, 500 - i, 500);
-		line(0, i, i, 500);
+		//övre 2
+		line(0, i, 500 -i, 0);
+		line(500, i, i, 0);
+		//undre 2
+		line(0, 500 - i, 500 - i, 500);
+		line(500, 500 - i, i, 500);
 	}
 }
