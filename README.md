@@ -17,3 +17,7 @@ Inlämningar och assignments från Game Programmer
 ## 04 - Input and Movement
 	Assignment - Klar
 	Extra - WIP
+
+## 06 - Classes and Objects
+	Assignment - WIP
+	Extra - WIP
