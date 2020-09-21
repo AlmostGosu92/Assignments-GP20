@@ -2,7 +2,7 @@ boolean moveLeft;
 boolean moveRight;
 boolean moveUp;
 boolean moveDown;
-boolean moving;
+PVector inputVector = new PVector();
 
 //Key pressed, set our variables to true
 void keyPressed()
@@ -15,7 +15,6 @@ void keyPressed()
 		moveUp = true;
 	else if (keyCode == DOWN || key == 's')
 		moveDown = true;
-	moving = true;
 }
 
 //When a key is released, we will set our variable to false
@@ -29,5 +28,27 @@ void keyReleased()
 		moveUp = false;
 	else if (keyCode == DOWN || key == 's')
 		moveDown = false;
-	moving = false;
+}
+
+PVector input(){
+
+	inputVector.x = 0;
+	inputVector.y = 0;
+
+	if (moveLeft){
+		inputVector.x --;
+	}
+	if (moveRight){
+		inputVector.x ++;
+	}
+	if (moveUp){
+		inputVector.y --;
+	}
+	if (moveDown){
+		inputVector.y ++;
+	}
+
+	inputVector.normalize();
+
+	return inputVector;
 }

@@ -1,45 +1,50 @@
-
-PVector pos;
-PVector dir;
-float speed = 1;
-float acc = 0.1;
+PVector pos = new PVector();
+PVector acc = new PVector();
+PVector vel = new PVector();
+float maxSpeed = 10;
+float accMult = 45;
+float deaccMultPerSec = 3;
+float deltaTime;
+long time;
 
 void setup()
 {
   size(640,480);
-  pos = new PVector(width * 0.5, height * 0.5);
-  dir = new PVector(0, 0);
+  pos.x = width * 0.5;
+  pos.y = height * 0.5;
+  acc = new PVector(0, 0);
   ellipseMode(CENTER);
+  frameRate(20);
 }
 
 void draw() {
+	float speed = 60;
 	background(50, 166, 240);
-		if (moveLeft){
-			dir.x = -1;
-			pos.x += dir.x * speed;
-		}
-		if (moveRight){
-			dir.x = 1;
-			pos.x += dir.x * speed;
-		}
-		if (moveUp){
-			dir.y = -1;
-			pos.y += dir.y * speed;
-		}
-		if (moveDown){
-			dir.y = 1;
-			pos.y += dir.y * speed;
-		}
 
-		println("speed: "+speed);
-		speed += acc;
+	long currentTime = millis();
+	deltaTime = (currentTime - time) * 0.001f;
 
-/*	  if (keyPressed) {
-	    pos.x += dir.x;
-	    pos.y += dir.y;
-	    pos = pos.mult(speed);
-	}*/
+	acc = input();
+
+	acc.mult(accMult * deltaTime);
+
+	if (acc.mag() == 0){
+		acc.x -= vel.x * deaccMultPerSec * deltaTime;
+		acc.y -= vel.y * deaccMultPerSec * deltaTime;
+	}
+	
+	vel.add(acc);
+
+	vel.limit(maxSpeed);
+
+	PVector move = vel.copy();
+	move.mult(60 * deltaTime);
+
+	pos.add(move);
+
 
 	ellipse(pos.x, pos.y, 20, 20);
+
+	time = currentTime;
 }
 
