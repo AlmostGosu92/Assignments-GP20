@@ -1,9 +1,11 @@
 PVector pos = new PVector();
 PVector acc = new PVector();
 PVector vel = new PVector();
+PVector move = new PVector();
 float maxSpeed = 10;
 float accMult = 45;
 float deaccMultPerSec = 3;
+float speed = 60;
 float deltaTime;
 long time;
 
@@ -12,13 +14,11 @@ void setup()
   size(640,480);
   pos.x = width * 0.5;
   pos.y = height * 0.5;
-  acc = new PVector(0, 0);
   ellipseMode(CENTER);
-  frameRate(20);
+  frameRate(60);
 }
 
 void draw() {
-	float speed = 60;
 	background(50, 166, 240);
 
 	long currentTime = millis();
@@ -37,8 +37,8 @@ void draw() {
 
 	vel.limit(maxSpeed);
 
-	PVector move = vel.copy();
-	move.mult(60 * deltaTime);
+	move = vel.copy();
+	move.mult(speed * deltaTime);
 
 	pos.add(move);
 
