@@ -19,5 +19,9 @@ Inlämningar och assignments från Game Programmer
 	Extra - WIP
 
 ## 06 - Classes and Objects
+	Assignment - Klar
+	Extra - WIP
+
+## 07 - Collision and Zombies
 	Assignment - WIP
 	Extra - WIP
