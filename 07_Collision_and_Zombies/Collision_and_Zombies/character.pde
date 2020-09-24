@@ -1,19 +1,16 @@
-class Character
-{
+class Character {
+
 	PVector position;
 	PVector velocity;
-	int size;
+	int size = 15;
 	color characterColor;
 	float x;
 	float y;
 	boolean isZombie;
 
-
-	Character(){
+	Character() {
 		this.x = random(0, width);
 		this.y = random(0, height);
-		this.size = 15;
-		this.characterColor = new color(255, 255, 255);
 
 		position = new PVector(x, y);
 		velocity = new PVector();
@@ -21,32 +18,35 @@ class Character
 		velocity.y = random(-5, 6);
 	}
 
-}
+	Character(float x, float y, float velX, float velY) {
+		this.x = x;
+		this.y = y;
 
-void update() {
-	bounce();
-	position.x += velocity.x;
-	position.y += velocity.y;
-}
+		position = new PVector(x, y);
+		velocity = new PVector(velX, velY);
 
-void bounce() {
-	if (position.x < 0 || position.x > width) {
-		velocity.x = velocity.x * -1;
 	}
-	if (position.y < 0 || position.y > height) {
-		velocity.y = velocity.y * -1;
+
+
+
+	void update() {
+		bounce();
+		position.x += velocity.x;
+		position.y += velocity.y;
 	}
-}
 
-void draw() {
-	fill(characterColor);
-	ellipse(position.x, position.y, size, size);
-}
+	void bounce() {
+		if (position.x < 0 || position.x > width) {
+			velocity.x = velocity.x * -1;
+		}
+		if (position.y < 0 || position.y > height) {
+			velocity.y = velocity.y * -1;
+		}
+	}
 
-void becomeZombie() {
-	isZombie = true;
-}
+	void draw() {
+		fill(characterColor);
+		ellipse(position.x, position.y, size, size);
+	}
 
-void becomeHuman() {
-	isZombie = false;
 }
