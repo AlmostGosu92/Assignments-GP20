@@ -1,64 +1,58 @@
-float deltaTime;
-long time;
-int numberOfCharacters = 100;
-Character characters[];
+
+CharacterManager cm = new CharacterManager();
+
 
 void setup() {
 
 	size(640, 480);
 	ellipseMode(CENTER);
 
-	start();
+	cm.createCharacters();
+
 }
 
-void start() {
-	characters = new Character[numberOfCharacters];
-
-	for(int i = 0; i < characters.length; i ++) {
-
-		if (i == 0) {
-			characters[i] = new Zombie();
-		}
-		else {
-			characters[i] = new Human();
-		}
-
-	}
-}
 
 void draw() {
 
-clearBackground();
+	clearBackground();
 
-	long currentTime = millis();
-	deltaTime = (currentTime - time) * 0.001f;
-
-	for (int i = 0; i < characters.length; i++) {
-
-		for (int j = characters.length -1; j > i; j--) {
-
-		characters[i].isZombie = roundCollision(characters[i].position.x,
-			characters[i].position.y,
-			characters[i].size/2,
-
-			characters[j].position.x,
-			characters[j].position.y,
-			characters[j].size/2);
+	for (int i = 0; i < cm.characters.length; i++) {
 		
-		if (characters[i].isZombie && characters[i] instanceof Human) {
-			characters[i] = new Zombie(characters[i].position.x,
-			 characters[i].position.y,
-			 characters[i].velocity.x,
-			 characters[i].velocity.y);
-		}
-		}
+		for (int j = 0; j < cm.characters.length; j++) {
+
+			if (i != j){
+
+				boolean hasCollided = roundCollision(cm.characters[i].position.x,
+					cm.characters[i].position.y,
+					cm.characters[i].size / 2,
+
+					cm.characters[j].position.x,
+					cm.characters[j].position.y,
+					cm.characters[j].size / 2);
+
+				if (hasCollided && cm.characters[i].isZombie && cm.characters[j].isZombie == false) {
+					
+					//cm.zombieCollisionCheck(cm.characters[i], cm.characters[j]);
+					
+					cm.characters[j] = new Zombie(cm.characters[j].position.x, cm.characters[j].position.y,
+					 cm.characters[j].velocity.x, cm.characters[j].velocity.y);
+					
+
+					/*else if (cm.characters[j].isZombie) {
+						cm.characters[i] = new Zombie(cm.characters[i].x, cm.characters[i].y, 
+							cm.characters[i].velocity.x, cm.characters[i].velocity.y);
+					}*/
 
 
-		characters[i].update();
-		characters[i].draw();
+				}
+			}
+		}
+
+		cm.characters[i].update();
+		cm.characters[i].draw();
+
 	}
 
-	time = currentTime;
 }
 
 void clearBackground() {

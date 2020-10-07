@@ -3,24 +3,18 @@ class Character {
 	PVector position;
 	PVector velocity;
 	int size = 15;
-	color characterColor;
-	float x;
-	float y;
-	boolean isZombie;
+	color characterColor = color(128, 0, 0);
+	boolean isZombie = false;
 
 	Character() {
-		this.x = random(0, width);
-		this.y = random(0, height);
 
-		position = new PVector(x, y);
+		position = new PVector(random(0, width), random(0, height));
 		velocity = new PVector();
-		velocity.x = random(-5, 6);
-		velocity.y = random(-5, 6);
+		velocity.x = random(-2, 3);
+		velocity.y = random(-2, 3);
 	}
 
 	Character(float x, float y, float velX, float velY) {
-		this.x = x;
-		this.y = y;
 
 		position = new PVector(x, y);
 		velocity = new PVector(velX, velY);
