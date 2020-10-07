@@ -1,6 +1,6 @@
 class Zombie extends Character {
 
-	int maxSpeed = 5;
+	int maxSpeed = 2;
 
 
 	public Zombie(){

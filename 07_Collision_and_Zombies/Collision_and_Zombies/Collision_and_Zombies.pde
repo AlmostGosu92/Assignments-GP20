@@ -1,6 +1,6 @@
 
 CharacterManager cm = new CharacterManager();
-
+int zombieCount;
 
 void setup() {
 
@@ -8,7 +8,7 @@ void setup() {
 	ellipseMode(CENTER);
 
 	cm.createCharacters();
-
+	zombieCount = 1;
 }
 
 
@@ -37,7 +37,7 @@ void draw() {
 					cm.characters[j] = new Zombie(cm.characters[j].position.x, cm.characters[j].position.y,
 					 cm.characters[j].velocity.x, cm.characters[j].velocity.y);
 					
-
+					zombieCount++;
 					/*else if (cm.characters[j].isZombie) {
 						cm.characters[i] = new Zombie(cm.characters[i].x, cm.characters[i].y, 
 							cm.characters[i].velocity.x, cm.characters[i].velocity.y);
@@ -52,6 +52,12 @@ void draw() {
 		cm.characters[i].draw();
 
 	}
+
+	if (zombieCount == cm.numberOfCharacters) {
+		gameOver();
+	}
+
+
 
 }
 
@@ -71,4 +77,8 @@ void gameOver() {
 	textSize(16);
 	text("Everyone is (un)dead", width/2, height/2);
 	text("Press 'R' to restart", width/2, height/2 + 32);
+
+	if (keyPressed == 'r') {
+		setup();
+	}
 }
