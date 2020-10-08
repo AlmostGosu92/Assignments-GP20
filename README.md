@@ -25,3 +25,6 @@ Inlämningar och assignments från Game Programmer
 ## 07 - Collision and Zombies
 	Assignment - Klar
 	Extra - WIP
+
+## 08 - Shooter Project
+	Assignment - [Klar](https://github.com/Mellowtide-CH/grp7AxelChrille "Repo för Shooter Project")
