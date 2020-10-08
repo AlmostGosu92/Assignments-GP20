@@ -23,5 +23,5 @@ Inlämningar och assignments från Game Programmer
 	Extra - WIP
 
 ## 07 - Collision and Zombies
-	Assignment - WIP
+	Assignment - Klar
 	Extra - WIP
