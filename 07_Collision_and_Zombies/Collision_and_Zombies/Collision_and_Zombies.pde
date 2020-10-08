@@ -6,9 +6,14 @@ void setup() {
 
 	size(640, 480);
 	ellipseMode(CENTER);
+	start();
+}
 
+
+void start() {
 	cm.createCharacters();
 	zombieCount = 1;
+	
 }
 
 
@@ -78,7 +83,7 @@ void gameOver() {
 	text("Everyone is (un)dead", width/2, height/2);
 	text("Press 'R' to restart", width/2, height/2 + 32);
 
-	if (keyPressed == 'r') {
-		setup();
+	if (rKeyDown) {
+		start();
 	}
 }
