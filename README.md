@@ -27,4 +27,4 @@ Inlämningar och assignments från Game Programmer
 	Extra - WIP
 
 ## 08 - Shooter Project
-	Assignment - [Klar] (https://github.com/Mellowtide-CH/grp7AxelChrille)
+	Assignment - [Klar](https://github.com/Mellowtide-CH/grp7AxelChrille)
