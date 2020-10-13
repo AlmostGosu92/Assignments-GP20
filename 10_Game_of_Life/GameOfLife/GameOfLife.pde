@@ -23,12 +23,16 @@ void setup() {
 		for (int x = 0; x < numberOfColums; x++) {
 
 			gridCells[x][y] = new GameObject(x * cellSize, y * cellSize, cellSize);
+			gridBuffer[x][y] = new GameObject(x * cellSize, y * cellSize, cellSize);
+
 
 			if (random(0, 100) < fillPercentage) {
 				gridCells[x][y].alive = true;
 			}
 		}
 	}
+
+
 }
 
 
@@ -49,8 +53,6 @@ void draw() {
 
 
 void update() {
-	
-	arrayCopy(gridCells, gridBuffer);
 
 	for (int y = 0; y < numberOfRows; y++) {
 
@@ -60,7 +62,13 @@ void update() {
 		}
 	}
 
-	arrayCopy(gridBuffer, gridCells);
+	for (int y = 0; y < numberOfRows; y++) {
+
+		for (int x = 0; x < numberOfColums; x++) {
+
+			gridCells[x][y].alive = gridBuffer[x][y].alive;
+		}
+	}
 }
 
 boolean checkNeighbours(int x, int y) {
