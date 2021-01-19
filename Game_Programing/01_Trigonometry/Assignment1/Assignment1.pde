@@ -5,6 +5,10 @@ float curveFrequency;
 float multiplier = 0.002;
 int numberOfPoints;
 
+float posX;
+float posY;
+float v;
+
 void setup()
 {
 	size(640, 480);
@@ -16,13 +20,18 @@ void setup()
 	curveSpeed = 0.10;
 	curveAmp = 100;
 	curveFrequency = 0.15;
+
 }
 
 void draw()
 {
+	v = 10f;
+	posY = height / 2;
+	posX = width / 2;
 	clearBackground();	
-	sineCurve();
-	cosCurve();
+	//sineCurve();
+	//cosCurve();
+	sineCosCircle(100);
 	frame++;
 }
 
@@ -47,4 +56,24 @@ void cosCurve()
 	{
 		point(i * 10, height / 2 + cos((frame * curveSpeed) + (i * curveFrequency)) * curveAmp);
 	}
+}
+
+void sineCosCircle(int numberOfPoints)
+{
+	stroke(0, 255, 0);
+
+	float direction = 0;
+
+
+	for (int i = 0; i < numberOfPoints; i++) 
+	{	
+		
+		float dX = cos(direction) * v;
+		float dY = sin(direction) * v;
+
+		direction += (TWO_PI)*2 / numberOfPoints;
+
+		point(posX + dX * (float) i /numberOfPoints, posY + dY * (float) i / numberOfPoints);
+	}
+
 }
