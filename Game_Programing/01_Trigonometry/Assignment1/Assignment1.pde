@@ -25,13 +25,13 @@ void setup()
 
 void draw()
 {
-	v = 10f;
+	v = 200;
 	posY = height / 2;
 	posX = width / 2;
 	clearBackground();	
-	//sineCurve();
-	//cosCurve();
-	sineCosCircle(100);
+	sineCurve();
+	cosCurve();
+	sineCosSpiral(100);
 	frame++;
 }
 
@@ -58,9 +58,9 @@ void cosCurve()
 	}
 }
 
-void sineCosCircle(int numberOfPoints)
+void sineCosSpiral(int numberOfPoints)
 {
-	stroke(0, 255, 0);
+	stroke(221,160,221);
 
 	float direction = 0;
 
@@ -71,9 +71,9 @@ void sineCosCircle(int numberOfPoints)
 		float dX = cos(direction) * v;
 		float dY = sin(direction) * v;
 
-		direction += (TWO_PI)*2 / numberOfPoints;
+		direction += (TWO_PI)*2 / numberOfPoints * frame * 0.004f;
 
-		point(posX + dX * (float) i /numberOfPoints, posY + dY * (float) i / numberOfPoints);
+		point(posX + dX * (float) i / numberOfPoints, posY + dY * (float) i / numberOfPoints);
 	}
 
 }
